@@ -23,6 +23,6 @@ internal fun NoteRequest.toNote(ownerId: String): Note {
         content = content,
         color = color,
         createdAt = Instant.now(),
-        ownerId = ObjectId(ownerId)
+        ownerId = ObjectId(/*ownerId*/)
     )
 }
