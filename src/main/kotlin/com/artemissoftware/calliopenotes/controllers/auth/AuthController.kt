@@ -4,6 +4,7 @@ import com.artemissoftware.calliopenotes.controllers.auth.models.AuthRequest
 import com.artemissoftware.calliopenotes.controllers.auth.models.RefreshRequest
 import com.artemissoftware.calliopenotes.security.auth.AuthService
 import com.artemissoftware.calliopenotes.security.auth.TokenPair
+import jakarta.validation.Valid
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -17,7 +18,7 @@ class AuthController(
 
     @PostMapping("/register")
     fun register(
-        /*@Valid*/ @RequestBody body: AuthRequest
+        @Valid @RequestBody body: AuthRequest
     ) {
         authService.register(body.email, body.password)
     }

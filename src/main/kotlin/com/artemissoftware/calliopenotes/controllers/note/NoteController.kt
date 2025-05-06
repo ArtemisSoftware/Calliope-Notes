@@ -5,6 +5,7 @@ import com.artemissoftware.calliopenotes.controllers.note.mapper.toResponse
 import com.artemissoftware.calliopenotes.controllers.note.models.NoteRequest
 import com.artemissoftware.calliopenotes.controllers.note.models.NoteResponse
 import com.artemissoftware.calliopenotes.database.repository.NoteRepository
+import jakarta.validation.Valid
 import org.bson.types.ObjectId
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.web.bind.annotation.*
@@ -17,7 +18,7 @@ class NoteController(
 
     @PostMapping
     fun save(
-        /*@Valid*/ @RequestBody body: NoteRequest
+        @Valid @RequestBody body: NoteRequest
     ): NoteResponse {
         val ownerId = SecurityContextHolder.getContext().authentication.principal as String
         val note = repository.save(body.toNote(ownerId))
